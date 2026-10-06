@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/nack.schema.json",
+  "title": "EnergyShark E1 - nack",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "nack"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "target": {},
+            "message": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          },
+          "required": [
+            "target",
+            "message"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "reason",
+        "code"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "reason": {
+              "const": "MALFORMED_MESSAGE"
+            },
+            "code": {
+              "enum": [
+                422
+              ]
+            }
+          },
+          "type": "object"
+        },
+        {
+          "properties": {
+            "reason": {
+              "const": "UNKNOWN_TYPE"
+            },
+            "code": {
+              "enum": [
+                400
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "target": {
+                  "$ref": "common.schema.json#/$defs/uuid"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        {
+          "properties": {
+            "reason": {
+              "const": "IDPK_EQUALS_MSGID"
+            },
+            "code": {
+              "enum": [
+                422
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "target": {
+                  "$ref": "common.schema.json#/$defs/uuid"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        {
+          "properties": {
+            "reason": {
+              "const": "IDENTITY_MISMATCH"
+            },
+            "code": {
+              "enum": [
+                403
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "target": {
+                  "$ref": "common.schema.json#/$defs/uuid"
+                }
+              }
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    }
+  ]
+}

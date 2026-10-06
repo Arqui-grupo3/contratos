@@ -1,0 +1,158 @@
+[
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "request",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "ask": "distance-table"
+    }
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "ack",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "target": "33333333-3333-4333-8333-333333333333"
+    }
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "nack",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "target": "33333333-3333-4333-8333-333333333333",
+      "message": "Mensaje rechazado"
+    },
+    "reason": "MALFORMED_MESSAGE",
+    "code": 422
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "error",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "target": "33333333-3333-4333-8333-333333333333",
+      "message": "Ciclo desconocido"
+    },
+    "cycleId": "cycle-1",
+    "reason": "CYCLE_UNKNOWN",
+    "code": 404
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "status-statement",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "energy": {
+        "generationCapacity": 100,
+        "consumption": 50,
+        "generationCost": 20
+      },
+      "validUntil": "2026-10-06T12:10:00Z"
+    },
+    "cycleId": "cycle-1"
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "transfer",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "quantity": -25,
+      "becauseOf": "33333333-3333-4333-8333-333333333333"
+    },
+    "cycleId": "cycle-1"
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "distance-table",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "distances": {
+        "COR": {
+          "distance": 10,
+          "transportCost": 0.5,
+          "enabled": true
+        }
+      }
+    }
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "demand-statement",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "balance": {
+        "quantity": -50,
+        "valuePerKwh": 21
+      }
+    },
+    "cycleId": "cycle-1"
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "negotiation-proposal",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "direction": "give",
+      "quantity": 50,
+      "pricePerEnergy": 21
+    },
+    "cycleId": "cycle-1"
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "give",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "target": "33333333-3333-4333-8333-333333333333",
+      "energy": 50,
+      "pricePerEnergy": 21
+    },
+    "cycleId": "cycle-1"
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "take",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "target": "33333333-3333-4333-8333-333333333333",
+      "energy": 50,
+      "pricePerEnergy": 21
+    },
+    "cycleId": "cycle-1"
+  },
+  {
+    "idpk": "11111111-1111-4111-8111-111111111111",
+    "msgId": "22222222-2222-4222-8222-222222222222",
+    "type": "negotiation-report",
+    "timestamp": "2026-10-06T12:00:00Z",
+    "sender": "central",
+    "data": {
+      "budgetBalance": -25,
+      "energyBalance": 50
+    },
+    "cycleId": "cycle-1"
+  }
+]

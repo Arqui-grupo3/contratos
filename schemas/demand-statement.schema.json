@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/demand-statement.schema.json",
+  "title": "EnergyShark E1 - demand-statement",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "demand-statement"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "balance": {
+              "type": "object",
+              "properties": {
+                "quantity": {
+                  "$ref": "common.schema.json#/$defs/number"
+                },
+                "valuePerKwh": {
+                  "$ref": "common.schema.json#/$defs/nonnegative"
+                }
+              },
+              "required": [
+                "quantity",
+                "valuePerKwh"
+              ]
+            }
+          },
+          "required": [
+            "balance"
+          ]
+        },
+        "cycleId": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "cycleId"
+      ],
+      "type": "object"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/transfer.schema.json",
+  "title": "EnergyShark E1 - transfer",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "transfer"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "quantity": {
+              "$ref": "common.schema.json#/$defs/number"
+            },
+            "becauseOf": {
+              "$ref": "common.schema.json#/$defs/uuid"
+            }
+          },
+          "required": [
+            "quantity"
+          ]
+        },
+        "cycleId": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "cycleId"
+      ],
+      "type": "object"
+    }
+  ]
+}

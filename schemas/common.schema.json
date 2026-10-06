@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/common.schema.json",
+  "title": "EnergyShark E1 - common",
+  "$defs": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89aAbB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$"
+    },
+    "text": {
+      "type": "string",
+      "pattern": "\\S"
+    },
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$",
+      "format": "date-time"
+    },
+    "number": {
+      "type": "number"
+    },
+    "nonnegative": {
+      "type": "number",
+      "minimum": 0
+    },
+    "positive": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "envelope": {
+      "type": "object",
+      "properties": {
+        "idpk": {
+          "$ref": "#/$defs/uuid"
+        },
+        "msgId": {
+          "$ref": "#/$defs/uuid"
+        },
+        "type": {
+          "$ref": "#/$defs/text"
+        },
+        "timestamp": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "data": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "idpk",
+        "msgId",
+        "type",
+        "timestamp",
+        "data"
+      ]
+    }
+  }
+}

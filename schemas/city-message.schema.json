@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/city-message.schema.json",
+  "title": "EnergyShark E1 - city-message",
+  "allOf": [
+    {
+      "$ref": "envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "cityId": {
+          "const": "REE"
+        }
+      },
+      "required": [
+        "cityId"
+      ]
+    }
+  ],
+  "$comment": "AMQP user_id=city.REE es una propiedad del protocolo; no pertenece al JSON."
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/take.schema.json",
+  "title": "EnergyShark E1 - take",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "take"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "$ref": "common.schema.json#/$defs/uuid"
+            },
+            "energy": {
+              "$ref": "common.schema.json#/$defs/positive"
+            },
+            "pricePerEnergy": {
+              "$ref": "common.schema.json#/$defs/nonnegative"
+            }
+          },
+          "required": [
+            "target",
+            "energy",
+            "pricePerEnergy"
+          ]
+        },
+        "cycleId": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "cycleId"
+      ],
+      "type": "object"
+    }
+  ]
+}

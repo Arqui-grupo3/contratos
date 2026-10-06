@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/envelope.schema.json",
+  "title": "EnergyShark E1 - envelope",
+  "$comment": "idpk y msgId deben ser distintos ignorando mayusculas; esta comparacion se aplica en codigo, no en JSON Schema estandar.",
+  "oneOf": [
+    {
+      "$ref": "request.schema.json"
+    },
+    {
+      "$ref": "ack.schema.json"
+    },
+    {
+      "$ref": "nack.schema.json"
+    },
+    {
+      "$ref": "error.schema.json"
+    },
+    {
+      "$ref": "status-statement.schema.json"
+    },
+    {
+      "$ref": "transfer.schema.json"
+    },
+    {
+      "$ref": "distance-table.schema.json"
+    },
+    {
+      "$ref": "demand-statement.schema.json"
+    },
+    {
+      "$ref": "negotiation-proposal.schema.json"
+    },
+    {
+      "$ref": "give.schema.json"
+    },
+    {
+      "$ref": "take.schema.json"
+    },
+    {
+      "$ref": "negotiation-report.schema.json"
+    }
+  ]
+}

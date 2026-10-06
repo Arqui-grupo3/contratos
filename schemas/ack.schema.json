@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/ack.schema.json",
+  "title": "EnergyShark E1 - ack",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "ack"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "$ref": "common.schema.json#/$defs/uuid"
+            }
+          },
+          "required": [
+            "target"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  ]
+}

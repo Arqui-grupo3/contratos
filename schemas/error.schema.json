@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/error.schema.json",
+  "title": "EnergyShark E1 - error",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "error"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "target": {
+              "$ref": "common.schema.json#/$defs/uuid"
+            },
+            "message": {
+              "$ref": "common.schema.json#/$defs/text"
+            }
+          },
+          "required": [
+            "target",
+            "message"
+          ]
+        },
+        "cycleId": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "cycleId",
+        "reason",
+        "code"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "reason": {
+              "const": "CYCLE_UNKNOWN"
+            },
+            "code": {
+              "enum": [
+                404
+              ]
+            }
+          },
+          "type": "object"
+        },
+        {
+          "properties": {
+            "reason": {
+              "const": "CYCLE_EXPIRED"
+            },
+            "code": {
+              "enum": [
+                410
+              ]
+            }
+          },
+          "type": "object"
+        },
+        {
+          "properties": {
+            "reason": {
+              "const": "PRICE_ABOVE_CAP"
+            },
+            "code": {
+              "enum": [
+                422
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "cap": {
+                  "$ref": "common.schema.json#/$defs/nonnegative"
+                }
+              },
+              "required": [
+                "cap"
+              ]
+            }
+          },
+          "type": "object"
+        },
+        {
+          "properties": {
+            "reason": {
+              "const": "OVER_CAPACITY"
+            },
+            "code": {
+              "enum": [
+                409
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "spare": {
+                  "$ref": "common.schema.json#/$defs/nonnegative"
+                }
+              },
+              "required": [
+                "spare"
+              ]
+            }
+          },
+          "type": "object"
+        },
+        {
+          "properties": {
+            "reason": {
+              "const": "REPORT_TOO_EARLY"
+            },
+            "code": {
+              "enum": [
+                422,
+                425
+              ]
+            },
+            "data": {
+              "type": "object",
+              "properties": {
+                "opensAt": {
+                  "$ref": "common.schema.json#/$defs/timestamp"
+                }
+              },
+              "required": [
+                "opensAt"
+              ]
+            }
+          },
+          "type": "object"
+        }
+      ],
+      "type": "object"
+    }
+  ]
+}

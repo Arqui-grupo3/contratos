@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/negotiation-proposal.schema.json",
+  "title": "EnergyShark E1 - negotiation-proposal",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "negotiation-proposal"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "direction": {
+              "enum": [
+                "give",
+                "take"
+              ]
+            },
+            "quantity": {
+              "$ref": "common.schema.json#/$defs/positive"
+            },
+            "pricePerEnergy": {
+              "$ref": "common.schema.json#/$defs/nonnegative"
+            }
+          },
+          "required": [
+            "direction",
+            "quantity",
+            "pricePerEnergy"
+          ]
+        },
+        "cycleId": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "cycleId"
+      ],
+      "type": "object"
+    }
+  ]
+}

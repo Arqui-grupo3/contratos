@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/central-message.schema.json",
+  "title": "EnergyShark E1 - central-message",
+  "allOf": [
+    {
+      "$ref": "envelope.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "sender": {
+          "const": "central"
+        }
+      },
+      "required": [
+        "sender"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/status-statement.schema.json",
+  "title": "EnergyShark E1 - status-statement",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "status-statement"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "energy": {
+              "type": "object",
+              "properties": {
+                "generationCapacity": {
+                  "$ref": "common.schema.json#/$defs/nonnegative"
+                },
+                "consumption": {
+                  "$ref": "common.schema.json#/$defs/nonnegative"
+                },
+                "generationCost": {
+                  "$ref": "common.schema.json#/$defs/nonnegative"
+                }
+              },
+              "required": [
+                "generationCapacity",
+                "consumption",
+                "generationCost"
+              ]
+            },
+            "validUntil": {
+              "$ref": "common.schema.json#/$defs/timestamp"
+            }
+          },
+          "required": [
+            "energy",
+            "validUntil"
+          ]
+        },
+        "cycleId": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "cycleId"
+      ],
+      "type": "object"
+    }
+  ]
+}

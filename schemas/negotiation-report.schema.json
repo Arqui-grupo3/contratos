@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/negotiation-report.schema.json",
+  "title": "EnergyShark E1 - negotiation-report",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "negotiation-report"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "budgetBalance": {
+              "$ref": "common.schema.json#/$defs/number"
+            },
+            "energyBalance": {
+              "$ref": "common.schema.json#/$defs/number"
+            }
+          },
+          "required": [
+            "budgetBalance",
+            "energyBalance"
+          ]
+        },
+        "cycleId": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "cycleId"
+      ],
+      "type": "object"
+    }
+  ]
+}

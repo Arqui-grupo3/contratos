@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Arqui-grupo3/contratos/raw/refs/heads/master/schemas/distance-table.schema.json",
+  "title": "EnergyShark E1 - distance-table",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/envelope"
+    },
+    {
+      "properties": {
+        "type": {
+          "const": "distance-table"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "distances": {
+              "type": "object",
+              "propertyNames": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "additionalProperties": {
+                "type": "object",
+                "properties": {
+                  "distance": {
+                    "$ref": "common.schema.json#/$defs/nonnegative"
+                  },
+                  "transportCost": {
+                    "$ref": "common.schema.json#/$defs/nonnegative"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "distance",
+                  "transportCost",
+                  "enabled"
+                ]
+              }
+            }
+          },
+          "required": [
+            "distances"
+          ]
+        }
+      },
+      "type": "object"
+    }
+  ]
+}
